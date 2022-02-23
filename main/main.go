@@ -19,12 +19,13 @@ func main() {
 
 	// Build the YAMLHandler using the mapHandler as the
 	// fallback
+	// this yaml sample data doesn't work with tabs, only spaces
 	yaml := `
-	- path: /urlshort
-	  url: https://github.com/gophercises/urlshort
-	- path: /urlshort-final
-	  url: https://github.com/gophercises/urlshort/tree/solution
-	`
+  - path: /urlshort
+    url: https://github.com/gophercises/urlshort
+  - path: /urlshort-final
+    url: https://github.com/gophercises/urlshort/tree/solution
+    `
 	yamlHandler, err := urlshort.YAMLHandler([]byte(yaml), mapHandler)
 	if err != nil {
 		panic(err)

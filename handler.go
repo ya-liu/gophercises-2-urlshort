@@ -52,8 +52,12 @@ func YAMLHandler(yml []byte, fallback http.Handler) (http.HandlerFunc, error) {
 		return nil, err
 	}
 	// 2. convert yaml array into map
+	pathsToUrls := make(map[string]string)
+	for _, pu := range pathUrls {
+		pathsToUrls[pu.Path] = pu.URL
+	}
+
 	// 3. map is called pathToURLs, return a map handler using the map
-	pathsToUrls := map[string]string{}
 	return MapHandler(pathsToUrls, fallback), nil
 }
 
